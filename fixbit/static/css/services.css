@@ -22,7 +22,7 @@
     bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    -webkit-transform: translateX(-50%); /* Safari üçün */
+    -webkit-transform: translateX(-50%);
     border-radius: 2px;
 }
 
@@ -35,49 +35,41 @@
 }
 
 .service-card {
-    perspective: 1200px;
-    -webkit-perspective: 1200px; /* Safari üçün */
+    width: 100%;
     height: 260px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    -webkit-transition: transform 0.4s ease, box-shadow 0.4s ease; /* Safari üçün */
-}
-
-.service-card:hover {
-    transform: translateY(-8px);
-    -webkit-transform: translateY(-8px); /* Safari üçün */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
 }
 
 .card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Safari üçün */
     transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d; /* Safari üçün */
+    -webkit-transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+    -webkit-transition: -webkit-transform 0.8s ease;
 }
 
 .service-card:hover .card-inner {
     transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg); /* Safari üçün */
+    -webkit-transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
+.card-front,
+.card-back {
     position: absolute;
     width: 100%;
     height: 100%;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-backface-visibility: hidden; /* Safari üçün */
+    border-radius: 10px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     padding: 1rem;
-    border-radius: 10px;
+    box-sizing: border-box;
 }
 
 .card-front {
@@ -86,22 +78,26 @@
     background-color: #2A235F;
     color: #FFFFFF;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
 }
 
 .card-front h3 {
     font-size: 1.5rem;
     font-weight: 600;
     margin: 0;
-    text-align: center;
     font-family: 'Inter', sans-serif;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
 }
 
 .card-back {
     background-color: #FFD700;
     color: #1F2937;
     transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg); /* Safari üçün */
-    text-align: center;
+    -webkit-transform: rotateY(180deg);
+    z-index: 1;
 }
 
 .card-back p {
@@ -109,6 +105,8 @@
     margin: 0 0 1rem;
     line-height: 1.4;
     font-family: 'Inter', sans-serif;
+    text-align: center;
+    padding: 0 0.5rem;
 }
 
 .btn-details {
@@ -121,13 +119,13 @@
     font-weight: 500;
     font-family: 'Inter', sans-serif;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    -webkit-transition: background-color 0.3s ease, -webkit-transform 0.2s ease; /* Safari üçün */
+    -webkit-transition: background-color 0.3s ease, -webkit-transform 0.2s ease;
 }
 
 .btn-details:hover {
     background-color: #473ba5;
     transform: translateY(-2px);
-    -webkit-transform: translateY(-2px); /* Safari üçün */
+    -webkit-transform: translateY(-2px);
 }
 
 .no-services {
@@ -136,6 +134,8 @@
     margin-top: 1.5rem;
     font-family: 'Inter', sans-serif;
 }
+
+/* Responsive */
 
 @media (max-width: 768px) {
     .services-grid {
