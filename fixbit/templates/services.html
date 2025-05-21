@@ -39,44 +39,5 @@
 </footer>
 </div>
 <script src="{% static 'js/main.js' %}"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const serviceCards = document.querySelectorAll('.service-card');
-
-    serviceCards.forEach(card => {
-        const cardInner = card.querySelector('.card-inner');
-
-        card.addEventListener('click', function (e) {
-            e.stopPropagation(); // klik "yuxarıya" getməsin
-
-            // Əgər bu kart artıq açıqdırsa → bağla
-            if (cardInner.classList.contains('flipped')) {
-                cardInner.classList.remove('flipped');
-            } else {
-                // Bütün digər kartları bağla
-                document.querySelectorAll('.card-inner.flipped').forEach(openCard => {
-                    openCard.classList.remove('flipped');
-                });
-
-                // Bu kartı aç
-                cardInner.classList.add('flipped');
-            }
-        });
-    });
-
-    // Boş yerə kliklədikdə bütün açıq kartları bağla
-    document.addEventListener('click', function () {
-        document.querySelectorAll('.card-inner.flipped').forEach(openCard => {
-            openCard.classList.remove('flipped');
-        });
-    });
-});
-</script>
-
-
 </body>
-
-
-
-
 </html>

@@ -5,13 +5,20 @@
 <html lang="az">
 
 <head>
+  
+<title>{% block title %}Fixbit - Texniki Dəstək və IT Xidmətlər{% endblock %}</title>
+
+<meta name="description" content="{% block meta_description %}Peşəkar kompüter təmiri, texniki dəstək və IT xidmətlər - Fixbit{% endblock %}">
+<meta name="keywords" content="fixbit, texniki dəstək, kompüter təmiri, IT xidmətlər, Bakı kompüter servisi">
+<meta name="author" content="Fixbit Team">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="Fixbit - Texniki dəstək xidmətləri, kompüter təmiri, proqram təminatı və təhlükəsizlik kameralarının quraşdırılması.">
   <meta name="keywords" content="texniki dəstək, IT xidmətləri, kompüter təmiri, şəbəkə problemləri">
   <meta name="author" content="Fixbit">
-
+  <link rel="canonical" href="https://www.fixbit.az{{ request.path }}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="{% static 'css/Elaqe.css' %}">
   <link rel="stylesheet" href="{% static 'css/faq.css' %}">
