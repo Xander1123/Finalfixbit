@@ -292,3 +292,7 @@
         color: #FFD700; /* Keep gold hover */
     }
 }
+.card-inner.flipped {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+}

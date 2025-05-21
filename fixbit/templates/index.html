@@ -23,8 +23,7 @@
     {% for service in services %}
     <div class="service-card">
       <div class="card-inner">
-        <div class="card-front"
-          style="background-image: url('{% if service.image %}{{ service.image.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}');">
+        <div class="card-front">
           <h3>{{ service.name }}</h3>
         </div>
         <div class="card-back">
@@ -77,7 +76,7 @@
       <img src="{% static 'Images/location.png' %}" alt="Location">
       <h3>Ünvan</h3>
       <p>New Life Plaza (Yeni Həyat Plaza) <br>55 Zarifa Aliyeva , Bakı</p>
-      <a href="" target="_blank" class="btn-contact">Ünvan  </a>
+      <a href="" target="_blank" class="btn-contact">Ünvan </a>
     </div>
   </div>
 </section>
@@ -208,6 +207,23 @@
       tabButtons[0].click();
     }
   });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    serviceCards.forEach(card => {
+        card.addEventListener('click', function () {
+            // Toggle flip class
+            card.querySelector('.card-inner').classList.toggle('flipped');
+        });
+
+        // Mobile touch support
+        card.addEventListener('touchstart', function (e) {
+            e.stopPropagation();
+            card.querySelector('.card-inner').classList.toggle('flipped');
+        });
+    });
+});
 
 </script>
 
