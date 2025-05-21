@@ -1,0 +1,50 @@
+{% include "navbar.html" %}
+{% load static %}
+
+
+<section class="services-section">
+    <h2 class="section-title">Xidmətlərimiz</h2>
+    <div class="services-grid">
+        {% for service in services %}
+        <div class="service-card">
+            <div class="card-inner">
+                <div class="card-front" 
+                     style="background-image: url('{% if service.image %}{{ service.image.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}');">
+                    <h3>{{ service.name }}</h3>
+                </div>
+                <div class="card-back">
+                    <p>{{ service.description }}</p>
+                    <a href="https://wa.me/0102090888?text=Salam%2C%20sizdən%20xidmət%20almaq%20istəyirəm."
+                       class="btn-details" target="_blank">
+                        Daha Ətraflı
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="no-services">Hələ heç bir xidmət əlavə edilməmişdir.</p>
+        {% endfor %}
+    </div>
+</section>
+
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <p>&copy; 2025 Fixbit - Bütün hüquqlar qorunur.</p>
+        <nav class="footer-nav">
+            <a href="{% url 'home' %}">Əsas səhifə</a>
+            <a href="{% url 'services' %}">Xidmətlər</a>
+            <a href="{% url 'questions' %}">Suallar</a>
+            <a href="{% url 'contact' %}">Əlaqə</a>
+        </nav>
+    </div>
+</footer>
+</div>
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+
+
+
+</html>

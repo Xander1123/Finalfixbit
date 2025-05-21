@@ -1,0 +1,155 @@
+/* Message Section */
+.message-section {
+  padding: 3rem 2rem;
+  background-color:  rgb(233, 233, 233); /* Tünd göy fon (köhnə rəng) */
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff; /* Ağ mətn (köhnə rəng) */
+  margin-bottom: 2.5rem;
+  position: relative;
+
+}
+
+.section-title::before,
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  height: 3px;
+  width: 40px;
+  background-color: #fef9c3; /* Solğun sarı xətt (köhnə rəng) */
+}
+
+.section-title::before {
+  left: calc(50% - 50px);
+}
+
+.section-title::after {
+  right: calc(50% - 50px);
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  background-color: #ffffff; /* Ağ fon (köhnə rəng) */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Daha dərin kölgə */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1e293b; /* Tünd boz mətn (köhnə rəng) */
+  margin-bottom: 0.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem 1.25rem;
+  border: 1px solid #e5e7eb; /* Açıq boz border (köhnə rəng) */
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #1e293b; /* Tünd boz mətn (köhnə rəng) */
+  background-color: #ffffff; /* Ağ fon (köhnə rəng) */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #2A235F; /* Tünd göy fokus border (köhnə rəng) */
+  box-shadow: 0 0 8px rgba(79, 70, 229, 0.3); /* Yumşaq glow effekti */
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #9ca3af; /* Boz placeholder (köhnə rəng) */
+}
+
+.btn-submit {
+  padding: 0.8rem 2rem;
+  background-color: #2A235F; /* Tünd göy fon (köhnə rəng) */
+  color: #ffffff; /* Ağ mətn (köhnə rəng) */
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #4338ca; /* Bir az tünd göy (köhnə hover rəngi) */
+  transform: scale(1.05); /* Skalalanma effekti */
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4); /* Glow effekti */
+}
+
+.btn-submit:active {
+  transform: scale(1);
+  box-shadow: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .message-section {
+    padding: 2rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-title::before,
+  .section-title::after {
+    width: 30px;
+    bottom: -6px;
+  }
+
+  .section-title::before {
+    left: calc(50% - 40px);
+  }
+
+  .section-title::after {
+    right: calc(50% - 40px);
+  }
+
+  .contact-form {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.95rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+  }
+
+  .btn-submit {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+  }
+}

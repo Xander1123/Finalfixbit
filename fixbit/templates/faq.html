@@ -1,0 +1,48 @@
+{% load static %}
+<section class="interactive-faq">
+  <div class="container">
+    <div class="faq-header">
+      <h2>Tez-tez verilən suallar</h2>
+      <div class="category-tabs">
+        <button class="tab-btn active" data-category="all">Hamısı</button>
+        {% for category in faq_categories %}
+        <button class="tab-btn" data-category="cat-{{ category.id }}">
+          <span class="tab-icon">{{ category.icon|safe }}</span>
+          {{ category.name }}
+        </button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="faq-content">
+      {% for category in faq_categories %}
+      <div class="faq-category" id="cat-{{ category.id }}">
+        {% for question in category.active_faqs %}
+        <div class="faq-card">
+          <div class="question-box">
+            <h3>{{ question.question }}</h3>
+            <div class="toggle-btn">
+              <span class="plus">+</span>
+              <span class="minus">−</span>
+            </div>
+          </div>
+          <div class="answer-box">
+            <div class="answer-content">
+              {{ question.answer|safe }}
+            </div>
+            <div class="helpful-btns">
+              <button class="helpful-btn" data-faq="{{ question.id }}">
+                <span>👍</span> Faydalı oldu
+              </button>
+              <button class="helpful-btn" data-faq="{{ question.id }}">
+                <span>👎</span> Faydalı olmadı
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

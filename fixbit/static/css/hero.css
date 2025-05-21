@@ -1,0 +1,107 @@
+.hero {
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-with-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 41, 59, 0.6); /* Dark gray overlay */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 2rem;
+    color: #ffffff;
+}
+
+.hero-content h1 {
+    font-size: 3.3rem; /* Increased 10% from 3rem */
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); /* Strong shadow for readability */
+}
+
+.hero-content p {
+    font-size: 1.375rem; /* Increased 10% from 1.25rem */
+    font-weight: 400;
+    margin-bottom: 1.75rem;
+    color: #e5e7eb;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    line-height: 1.5;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background-color: #2A235F; /* Lighter blue */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1.21rem; /* Increased 10% from 1.1rem */
+    font-weight: 500;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-btn:hover {
+    background-color: #FFD700;
+    transform: translateY(-2px);
+}
+
+.hero-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 400px;
+    }
+
+    .hero-content {
+        padding: 1.5rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.475rem; /* Increased 10% from 2.25rem */
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content p {
+        font-size: 1.21rem; /* Increased 10% from 1.1rem */
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-btn {
+        padding: 0.75rem 1.75rem;
+        font-size: 1.1rem; /* Increased 10% from 1rem */
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.925rem; /* Increased 10% from 1.75rem */
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content p {
+        font-size: 1.1rem; /* Increased 10% from 1rem */
+        text-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    }
+}

@@ -1,0 +1,293 @@
+/* Header Container */
+.header {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    max-width: calc(100% - 40px); /* 20px on each side */
+    padding: 0 20px;
+    color: #2A235F; /* Main text color added here */
+}
+
+/* Compact Top Bar */
+.compact-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 20px;
+    background-color: #2A235F;
+    color: white; /* Contrasting text for dark background */
+    font-size: 13px;
+    margin: 0 auto;
+    max-width: calc(100% - 40px);
+}
+
+.left-section,
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.phone-number {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white; /* Maintain contrast on dark bg */
+}
+
+.lang-link {
+    color: white; /* Maintain contrast on dark bg */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 5px;
+    transition: opacity 0.2s ease;
+}
+
+.lang-link:hover {
+    opacity: 0.9;
+}
+
+.lang-link img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Main Top Bar */
+.top-bar {
+    background-color: #2A235F; /* Changed to match */
+    color: white; /* Contrasting text */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 20px;
+    font-size: 14px;
+    margin: 0 auto;
+    max-width: calc(100% - 40px);
+}
+
+.top-bar .left,
+.top-bar .right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.top-bar i {
+    margin-right: 5px;
+    color: white; /* Icons match text */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    position: relative;
+    margin: 0 auto;
+    max-width: calc(100% - 40px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.navbar .logo {
+    text-decoration: none;
+    color: #2A235F; /* Changed to match */
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar .logo img {
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.navbar .logo:hover img {
+    transform: scale(1.05);
+}
+
+/* Navigation */
+.navbar nav ul {
+    background-color: white;
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li a {
+    color: white; /* Changed to match */
+    text-decoration: none;
+    font-size: 16px;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+.navbar ul li a:hover {
+    color: #FFD700; /* Keep gold hover */
+}
+
+.navbar ul li a::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: #FFD700;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.navbar ul li a:hover::after {
+    width: 100%;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    fill: #2A235F; /* For SVG icons */
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #2A235F; /* Changed to match */
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .header,
+    .compact-top-bar,
+    .top-bar,
+    .navbar {
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: 100%;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: #ffffff;
+        padding: 80px 20px 20px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+
+    .navbar nav.active {
+        right: 0;
+    }
+
+    .navbar nav ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+    .compact-top-bar,
+    .top-bar {
+        padding: 5px 20px;
+        font-size: 12px;
+    }
+
+    .lang-link img {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .navbar {
+        padding: 8px 20px;
+    }
+    
+    .navbar .logo {
+        font-size: 24px;
+    }
+    
+    .navbar .logo img {
+        height: 40px;
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .compact-top-bar,
+    .top-bar {
+        background-color: #2A235F;
+        color: white; /* Maintain contrast */
+    }
+    
+    .navbar {
+        background-color: white;
+    }
+    
+    .navbar .logo {
+        color: white;
+    }
+    
+    .navbar ul li a {
+        color: #2A235F;
+    }
+    
+    .hamburger span {
+        background-color: #2A235F;
+    }
+    
+    .navbar nav {
+        background-color: white;
+    }
+    
+    .navbar ul li a:hover {
+        color: #FFD700; /* Keep gold hover */
+    }
+}

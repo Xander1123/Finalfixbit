@@ -1,0 +1,243 @@
+.interactive-faq {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.faq-header h2 {
+  font-size: 2.5rem;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.faq-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #2A235F;
+  border-radius: 2px;
+}
+
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  border: none;
+  background: white;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.tab-btn.active {
+  background: #2A235F;
+  color: white;
+}
+
+.tab-icon {
+  font-size: 1.2rem;
+}
+
+.faq-content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.faq-category {
+  display: none;
+  padding: 20px;
+}
+
+.faq-category.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+.faq-card {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.faq-card:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.question-box {
+  padding: 20px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.question-box h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2d3748;
+  flex: 1;
+}
+
+.toggle-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.toggle-btn .minus {
+  display: none;
+}
+
+.faq-card.active .toggle-btn {
+  background: #2A235F;
+  color: white;
+  transform: rotate(180deg);
+}
+
+.faq-card.active .toggle-btn .plus {
+  display: none;
+}
+
+.faq-card.active .toggle-btn .minus {
+  display: block;
+}
+
+.answer-box {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  background: #f8fafc;
+}
+
+.faq-card.active .answer-box {
+  max-height: 500px;
+}
+
+.answer-content {
+  padding: 0 20px;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+
+
+/* Helpful Buttons Container */
+.helpful-btns {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+/* Base Button Styles */
+.helpful-btn {
+  padding: 8px 16px;
+  border: none;
+  background: #edf2f7;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  color: #4a5568;
+}
+
+/* Button Hover State */
+.helpful-btn:hover {
+  background: #e2e8f0;
+  transform: translateY(-1px);
+}
+
+/* Button Active/Selected State */
+.helpful-btn.selected {
+  background: #2A235F;
+  color: white;
+}
+
+/* Button Disabled State */
+.helpful-btn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Emoji Styles */
+.helpful-btn span {
+  font-size: 1.1rem;
+}
+
+/* Specific Button States */
+.helpful-btn.helpful-yes.selected {
+  background: #38a169; /* Green for "Helpful" */
+}
+
+.helpful-btn.helpful-no.selected {
+  background: #e53e3e; /* Red for "Not Helpful" */
+}
+
+/* Button Feedback Animation */
+.helpful-btn:active:not(.disabled) {
+  transform: scale(0.95);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .category-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tab-btn {
+    width: 80%;
+    justify-content: center;
+  }
+}

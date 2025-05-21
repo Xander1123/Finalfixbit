@@ -1,0 +1,7 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-wrap: normal;
+    font-family: 'Roboto', sans-serif; /* Apply Roboto globally */
+}

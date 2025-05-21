@@ -1,0 +1,216 @@
+{% load static %}
+{% load tz %}
+{% include "navbar.html" %}
+
+
+<section class="hero hero-with-bg" data-bg="{% static 'Images/hero.jpg' %}">
+  <div class="hero-content">
+    {% if hero_section %}
+    <h1>{{ hero_section.title }}</h1>
+    <p>{{ hero_section.description }}</p>
+    <a href="{{ hero_section.button_url }}" class="hero-btn">{{ hero_section.button_text }}</a>
+    {% else %}
+    <h1>Xidmətlərimizlə Tanış Olun</h1>
+    <p>Bizimlə texniki dəstək alın və problemlərinizi həll edin!</p>
+    <a href="#services" class="hero-btn">Ətraflı</a>
+    {% endif %}
+  </div>
+</section>
+
+<section class="services-section">
+  <h2 class="section-title">Xidmətlərimiz</h2>
+  <div class="services-grid">
+    {% for service in services %}
+    <div class="service-card">
+      <div class="card-inner">
+        <div class="card-front"
+          style="background-image: url('{% if service.image %}{{ service.image.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}');">
+          <h3>{{ service.name }}</h3>
+        </div>
+        <div class="card-back">
+          <p>{{ service.description }}</p>
+          <a href="https://wa.me/0102090888?text=Salam%2C%20sizdən%20xidmət%20almaq%20istəyirəm." class="btn-details"
+            target="_blank">
+            Daha Ətraflı
+          </a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p class="no-services">Hələ heç bir xidmət əlavə edilməmişdir.</p>
+    {% endfor %}
+  </div>
+</section>
+
+
+{%include "faq.html"%}
+
+<section class="contact-section">
+  <h2 class="section-title">Bizimlə Əlaqə</h2>
+  <div class="contact-cards">
+    <!-- WhatsApp -->
+    <div class="contact-card">
+      <img src="{% static 'Images/whatsapp (1).png' %}" alt="WhatsApp">
+      <h3>WhatsApp</h3>
+      <p>Bizimlə WhatsApp üzərindən birbaşa əlaqə saxlayın.</p>
+      <a href="https://wa.me/994102090888" target="_blank" class="btn-contact">Əlaqə Saxla</a>
+    </div>
+
+    <!-- Live Chat -->
+    <div class="contact-card">
+      <img src="{% static 'Images/live-chat.png' %}" alt="Live Chat">
+      <h3>Canlı Söhbət</h3>
+      <p>Sayt üzərindən canlı dəstək ilə əlaqə qurun.</p>
+      <a href="#" class="btn-contact">Söhbətə Başla</a>
+    </div>
+
+    <!-- Instagram -->
+    <div class="contact-card">
+      <img src="{% static 'Images/instagram (2).png' %}" alt="Instagram">
+      <h3>Instagram</h3>
+      <p>Bizi yerində ziyarət edin və Instagram səhifəmizə baxın.</p>
+      <a href="https://www.instagram.com/fixbit.az/" target="_blank" class="btn-contact">Instagram</a>
+    </div>
+
+    <!-- Location -->
+    <div class="contact-card">
+      <img src="{% static 'Images/location.png' %}" alt="Location">
+      <h3>Ünvan</h3>
+      <p>New Life Plaza (Yeni Həyat Plaza) <br>55 Zarifa Aliyeva , Bakı</p>
+      <a href="" target="_blank" class="btn-contact">Ünvan  </a>
+    </div>
+  </div>
+</section>
+
+<section class="message-section">
+  <h2 class="section-title">Bizimlə əlaqə</h2>
+  <form class="contact-form" method="POST" action="{% url 'contactmessage' %}">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="name">Adınız</label>
+      <input type="text" id="name" name="name" placeholder="Adınızı daxil edin" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email ünvanınız</label>
+      <input type="email" id="email" name="email" placeholder="Email ünvanınızı daxil edin" required>
+    </div>
+    <div class="form-group">
+      <label for="message">Mesajınız</label>
+      <textarea id="message" name="message" rows="5" placeholder="Mesajınızı yazın..." required></textarea>
+    </div>
+    <button type="submit" class="btn-submit">Göndər</button>
+  </form>
+</section>
+
+
+<div class="map-container" style="text-align:center; margin-top: 30px;">
+  <h3>Ünvanımız</h3>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.506736794132!2d49.8570416!3d40.3754604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d2ba33b44b5%3A0x1dd79a726739172c!2sNew%20Life%20Plaza%20(Yeni%20H%C9%99yat%20Plaza)!5e0!3m2!1sen!2saz!4v1747813203355!5m2!1sen!2saz"
+    width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>&copy; {% now "Y" %} Fixbit - Bütün hüquqlar qorunur.</p>
+    <nav class="footer-nav">
+      <a href="{% url 'home' %}">Əsas səhifə</a>
+      <a href="{% url 'services' %}">Xidmətlər</a>
+      <a href="{% url 'questions' %}">Suallar</a>
+      <a href="{% url 'contact' %}">Əlaqə</a>
+    </nav>
+  </div>
+</footer>
+<script src="{% static 'js/main.js' %}"></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Tab dəyişdirmə funksionallığı
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const faqCategories = document.querySelectorAll('.faq-category');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        // Aktiv tabı dəyiş
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+
+        const categoryId = this.dataset.category;
+
+        // Kateqoriyaları göstər/gizlə
+        faqCategories.forEach(category => {
+          category.classList.remove('active');
+
+          if (categoryId === 'all' || category.id === categoryId) {
+            setTimeout(() => {
+              category.classList.add('active');
+            }, 50);
+          }
+        });
+      });
+    });
+
+    // FAQ açıb bağlama
+    const faqCards = document.querySelectorAll('.faq-card');
+
+    faqCards.forEach(card => {
+      const questionBox = card.querySelector('.question-box');
+
+      questionBox.addEventListener('click', function () {
+        // Digər bütün FAQ-ları bağla
+        faqCards.forEach(item => {
+          if (item !== card) {
+            item.classList.remove('active');
+          }
+        });
+
+        // Kliklənən FAQ-u aç/bağla
+        card.classList.toggle('active');
+      });
+    });
+
+    // Faydalı/Faydalı olmadı düymələri
+    // Helpful Buttons Functionality
+    const helpfulButtons = document.querySelectorAll('.helpful-btn');
+
+    helpfulButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        // If already selected, do nothing
+        if (this.classList.contains('selected')) return;
+
+        // Remove selection from all buttons
+        helpfulButtons.forEach(btn => {
+          btn.classList.remove('selected', 'disabled');
+        });
+
+        // Add selected class to clicked button
+        this.classList.add('selected');
+
+        // Disable all buttons after selection
+        helpfulButtons.forEach(btn => {
+          if (!btn.classList.contains('selected')) {
+            btn.classList.add('disabled');
+          }
+        });
+
+        // Get feedback data
+        const faqId = this.closest('.faq-card').dataset.id;
+        const isHelpful = this.classList.contains('helpful-yes');
+
+        // Send feedback to server (example)
+        console.log(`FAQ ID: ${faqId} - ${isHelpful ? 'Helpful' : 'Not Helpful'}`);
+      });
+    });
+
+    // Əvvəldən birinci kateqoriyanı göstər
+    if (tabButtons.length > 0) {
+      tabButtons[0].click();
+    }
+  });
+
+</script>
+
+</body>
+
+</html>
