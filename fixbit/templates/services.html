@@ -39,6 +39,47 @@
 </footer>
 </div>
 <script src="{% static 'js/main.js' %}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    serviceCards.forEach(card => {
+        card.addEventListener('click', function (e) {
+            e.stopPropagation();
+
+            // Əvvəl açılmış kartları bağla
+            document.querySelectorAll('.card-inner.flipped').forEach(openCard => {
+                if (openCard !== card.querySelector('.card-inner')) {
+                    openCard.classList.remove('flipped');
+                }
+            });
+
+            // Bu karta flip class əlavə et (əgər artıq açıq deyilsə)
+            card.querySelector('.card-inner').classList.toggle('flipped');
+        });
+
+        // Mobile touch üçün də eyni davranış
+        card.addEventListener('touchstart', function (e) {
+            e.stopPropagation();
+
+            document.querySelectorAll('.card-inner.flipped').forEach(openCard => {
+                if (openCard !== card.querySelector('.card-inner')) {
+                    openCard.classList.remove('flipped');
+                }
+            });
+
+            card.querySelector('.card-inner').classList.toggle('flipped');
+        });
+    });
+
+    // Saytın istənilən boş yerinə kliklənəndə bütün açıq kartları bağla
+    document.addEventListener('click', function () {
+        document.querySelectorAll('.card-inner.flipped').forEach(openCard => {
+            openCard.classList.remove('flipped');
+        });
+    });
+});
+</script>
 
 </body>
 
