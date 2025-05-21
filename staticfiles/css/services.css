@@ -1,26 +1,29 @@
 .services-section {
     padding: 3rem 1.5rem;
-    background-color: #f3f4f6; /* Soft gray background */
+    background-color: #F8FAFC;
     text-align: center;
 }
 
 .section-title {
-    font-size: 2.25rem;
-    font-weight: 600;
-    color: #1f2937; /* Dark gray for title */
-    margin-bottom: 2.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2A235F;
+    margin-bottom: 2rem;
     position: relative;
+    font-family: 'Inter', sans-serif;
 }
 
 .section-title::after {
     content: '';
     width: 60px;
     height: 3px;
-    background-color: #2A235F; /* Soft blue underline */
+    background: linear-gradient(to right, #2A235F, #4B5EAA);
     position: absolute;
     bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
+    -webkit-transform: translateX(-50%); /* Safari üçün */
+    border-radius: 2px;
 }
 
 .services-grid {
@@ -32,29 +35,35 @@
 }
 
 .service-card {
-    perspective: 1000px;
-    height: 280px;
+    perspective: 1200px;
+    -webkit-perspective: 1200px; /* Safari üçün */
+    height: 260px;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    -webkit-transition: transform 0.4s ease, box-shadow 0.4s ease; /* Safari üçün */
 }
 
 .service-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    -webkit-transform: translateY(-8px); /* Safari üçün */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.5s;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Safari üçün */
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d; /* Safari üçün */
 }
 
 .service-card:hover .card-inner {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg); /* Safari üçün */
 }
 
 .card-front, .card-back {
@@ -62,77 +71,101 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* Safari üçün */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1.25rem;
+    padding: 1rem;
     border-radius: 10px;
 }
 
 .card-front {
     background-size: cover;
     background-position: center;
-    background-color: #2A235F; /* Softer blue for front */
-    color: #ffffff;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    background-color: #2A235F;
+    color: #FFFFFF;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .card-front h3 {
-    font-size: 1.6rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 600;
     margin: 0;
     text-align: center;
+    font-family: 'Inter', sans-serif;
 }
 
 .card-back {
-    background-color: #FFD700; /* Softer yellow for back */
-    color: #1f2937; /* Dark gray text for contrast */
+    background-color: #FFD700;
+    color: #1F2937;
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg); /* Safari üçün */
     text-align: center;
 }
 
 .card-back p {
-    font-size: 0.95rem;
-    margin: 0 0 1.25rem;
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
     line-height: 1.4;
+    font-family: 'Inter', sans-serif;
 }
 
 .btn-details {
     display: inline-block;
-    padding: 0.6rem 1.25rem;
-    background-color: #2A235F; /* Dark gray button */
-    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    background-color: #2A235F;
+    color: #FFFFFF;
     text-decoration: none;
     border-radius: 6px;
     font-weight: 500;
-    transition: background-color 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    -webkit-transition: background-color 0.3s ease, -webkit-transform 0.2s ease; /* Safari üçün */
 }
 
 .btn-details:hover {
-    background-color: #41359e; /* Slightly lighter gray on hover */
+    background-color: #473ba5;
+    transform: translateY(-2px);
+    -webkit-transform: translateY(-2px); /* Safari üçün */
 }
 
 .no-services {
     font-size: 1.1rem;
-    color: #6b7280;
+    color: #6B7280;
     margin-top: 1.5rem;
+    font-family: 'Inter', sans-serif;
 }
 
 @media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .service-card {
+        height: 220px;
+    }
+
+    .card-front h3 {
+        font-size: 1.3rem;
+    }
+
+    .card-back p {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-section {
+        padding: 2rem 1rem;
+    }
+
     .section-title {
         font-size: 1.75rem;
     }
 
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-
     .service-card {
-        height: 240px;
-    }
-
-    .card-front h3 {
-        font-size: 1.4rem;
+        height: 200px;
     }
 }
