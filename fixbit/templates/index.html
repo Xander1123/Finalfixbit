@@ -213,50 +213,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     serviceCards.forEach(card => {
         const cardInner = card.querySelector('.card-inner');
-        let touchMoved = false;
 
-        // Mouse klik üçün (desktop)
         card.addEventListener('click', function (e) {
-            e.stopPropagation();
-            toggleFlip(cardInner);
-        });
+            e.stopPropagation(); // klik "yuxarıya" getməsin
 
-        // Mobile - touch start
-        card.addEventListener('touchstart', function (e) {
-            touchMoved = false;
-        });
+            // Əgər bu kart artıq açıqdırsa → bağla
+            if (cardInner.classList.contains('flipped')) {
+                cardInner.classList.remove('flipped');
+            } else {
+                // Bütün digər kartları bağla
+                document.querySelectorAll('.card-inner.flipped').forEach(openCard => {
+                    openCard.classList.remove('flipped');
+                });
 
-        // Mobile - touch move (əgər sürüşdürürsə, klik deyil deməkdir)
-        card.addEventListener('touchmove', function (e) {
-            touchMoved = true;
-        });
-
-        // Mobile - touch end (əgər toxunub tıqlanıbsa, flip et)
-        card.addEventListener('touchend', function (e) {
-            if (!touchMoved) {
-                e.preventDefault(); // bəzən lazımlı olur
-                e.stopPropagation();
-                toggleFlip(cardInner);
+                // Bu kartı aç
+                cardInner.classList.add('flipped');
             }
         });
     });
 
-    // Boş yerə basdıqda açıq olanları bağla
+    // Boş yerə kliklədikdə bütün açıq kartları bağla
     document.addEventListener('click', function () {
         document.querySelectorAll('.card-inner.flipped').forEach(openCard => {
             openCard.classList.remove('flipped');
         });
     });
-
-    // Flip funksiyası - yalnız bir kart açıq qalır
-    function toggleFlip(cardInner) {
-        document.querySelectorAll('.card-inner.flipped').forEach(openCard => {
-            if (openCard !== cardInner) {
-                openCard.classList.remove('flipped');
-            }
-        });
-        cardInner.classList.toggle('flipped');
-    }
 });
 
 </script>

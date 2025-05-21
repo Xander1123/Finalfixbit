@@ -185,3 +185,14 @@
         height: 200px;
     }
 }
+.card-inner {
+    transition: transform 0.8s ease;
+    -webkit-transition: -webkit-transform 0.8s ease;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+.card-inner.flipped {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+}
