@@ -212,40 +212,51 @@ document.addEventListener('DOMContentLoaded', function () {
     const serviceCards = document.querySelectorAll('.service-card');
 
     serviceCards.forEach(card => {
+        const cardInner = card.querySelector('.card-inner');
+        let touchMoved = false;
+
+        // Mouse klik üçün (desktop)
         card.addEventListener('click', function (e) {
             e.stopPropagation();
-
-            // Əvvəl açılmış kartları bağla
-            document.querySelectorAll('.card-inner.flipped').forEach(openCard => {
-                if (openCard !== card.querySelector('.card-inner')) {
-                    openCard.classList.remove('flipped');
-                }
-            });
-
-            // Bu karta flip class əlavə et (əgər artıq açıq deyilsə)
-            card.querySelector('.card-inner').classList.toggle('flipped');
+            toggleFlip(cardInner);
         });
 
-        // Mobile touch üçün də eyni davranış
+        // Mobile - touch start
         card.addEventListener('touchstart', function (e) {
-            e.stopPropagation();
+            touchMoved = false;
+        });
 
-            document.querySelectorAll('.card-inner.flipped').forEach(openCard => {
-                if (openCard !== card.querySelector('.card-inner')) {
-                    openCard.classList.remove('flipped');
-                }
-            });
+        // Mobile - touch move (əgər sürüşdürürsə, klik deyil deməkdir)
+        card.addEventListener('touchmove', function (e) {
+            touchMoved = true;
+        });
 
-            card.querySelector('.card-inner').classList.toggle('flipped');
+        // Mobile - touch end (əgər toxunub tıqlanıbsa, flip et)
+        card.addEventListener('touchend', function (e) {
+            if (!touchMoved) {
+                e.preventDefault(); // bəzən lazımlı olur
+                e.stopPropagation();
+                toggleFlip(cardInner);
+            }
         });
     });
 
-    // Saytın istənilən boş yerinə kliklənəndə bütün açıq kartları bağla
+    // Boş yerə basdıqda açıq olanları bağla
     document.addEventListener('click', function () {
         document.querySelectorAll('.card-inner.flipped').forEach(openCard => {
             openCard.classList.remove('flipped');
         });
     });
+
+    // Flip funksiyası - yalnız bir kart açıq qalır
+    function toggleFlip(cardInner) {
+        document.querySelectorAll('.card-inner.flipped').forEach(openCard => {
+            if (openCard !== cardInner) {
+                openCard.classList.remove('flipped');
+            }
+        });
+        cardInner.classList.toggle('flipped');
+    }
 });
 
 </script>
